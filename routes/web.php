@@ -22,9 +22,9 @@ Route::post('/subscribe', function(){
 });
 
 Route::get('/', 'FrontEndController@index')->name('index');
-Route::get('/posts/single/post/{slug}', 'FrontEndController@singlePost')->name('single.post');
-Route::get('/categories/single/category/{id}', 'FrontEndController@category')->name('single.category');
-Route::get('/tags/single/tag/{id}', 'FrontEndController@tag')->name('single.tag');
+Route::get('/posts/single-post/{slug}', 'FrontEndController@singlePost')->name('single.post');
+Route::get('/categories/single-category/{slug}', 'FrontEndController@category')->name('single.category');
+Route::get('/tags/single-tag/{slug}', 'FrontEndController@tag')->name('single.tag');
 
 Route::get('/results', function()
 {

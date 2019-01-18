@@ -41,9 +41,9 @@ class FrontEndController extends Controller
                     ->with('tags', Tag::all());
     }
 
-    public function category($id)
+    public function category($slug)
     {
-        $category = Category::find($id);
+        $category = Category::where('cat_slug', $slug)->first();
 
         return view('frontend.category')
                     ->with('category', $category)
@@ -52,9 +52,9 @@ class FrontEndController extends Controller
                     ->with('categories', Category::take(5)->get());
     }
 
-    public function tag($id)
+    public function tag($slug)
     {
-        $tag = Tag::find($id);
+        $tag = Tag::where('tag_slug', $slug)->first();
 
         return view('frontend.tag')
                     ->with('tag', $tag)

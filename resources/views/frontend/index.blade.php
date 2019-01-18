@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="header-spacer"></div>
+{{-- <div class="header-spacer"></div> --}}
 
 <div class="container">
     <div class="row">
@@ -46,7 +46,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="{{ route('single.category',['id' => $firstPost->category->id]) }}">{{ $firstPost->category->category }}</a>
+                                <a href="{{ route('single.category',['slug' => $firstPost->category->cat_slug]) }}">{{ $firstPost->category->category }}</a>
                             </span>
 
                             <span class="post__comments">
@@ -104,7 +104,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="{{ route('single.category',['id' => $secondPost->category->id]) }}">{{ $secondPost->category->category }}</a>
+                                <a href="{{ route('single.category',['slug' => $secondPost->category->cat_slug]) }}">{{ $secondPost->category->category }}</a>
                             </span>
 
                             <span class="post__comments">
@@ -156,7 +156,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="{{ route('single.category',['id' => $thirdPost->category->id]) }}">{{ $thirdPost->category->category }}</a>
+                                <a href="{{ route('single.category',['slug' => $thirdPost->category->cat_slug]) }}">{{ $thirdPost->category->category }}</a>
                             </span>
 
                             <span class="post__comments">
@@ -184,7 +184,7 @@
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
                                 <h4 class="h1 heading-title">
-                                    <a href="{{ route('single.category',['id' => $catA->id]) }}">
+                                    <a href="{{ route('single.category',['slug' => $catA->cat_slug]) }}">
                                         {{ $catA->category }}
                                     </a>
                                 </h4>
@@ -223,7 +223,7 @@
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
                                 <h4 class="h1 heading-title">
-                                    <a href="{{ route('single.category',['id' => $catB->id]) }}">
+                                    <a href="{{ route('single.category',['slug' => $catB->cat_slug]) }}">
                                         {{ $catB->category }}
                                     </a>
                                 </h4>
@@ -262,7 +262,7 @@
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
                                 <h4 class="h1 heading-title">
-                                    <a href="{{ route('single.category',['id' => $catC->id]) }}">
+                                    <a href="{{ route('single.category',['slug' => $catC->cat_slug]) }}">
                                         {{ $catC->category }}
                                     </a>
                                 </h4>

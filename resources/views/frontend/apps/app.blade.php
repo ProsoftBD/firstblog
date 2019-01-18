@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="{{ asset($settings->favicon) }}" type="image/x-icon">
-    <title>
-        {{-- @yield('title') --}}
-        {{ $title }}
-    </title>
+    <title> {{ $title }} </title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/fonts.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/crumina-fonts.css') }}">
@@ -39,11 +36,11 @@
             text-align: center;
         }
         .thumb-img-fixed-size{
-            max-height: 310px;
+            max-height: 300px !important;
             width: 100%;
         }
         .thumb-img-fixed-size-cat{
-            max-height: 180px;
+            max-height: 165px !important;
             width: 100%;
         }
 

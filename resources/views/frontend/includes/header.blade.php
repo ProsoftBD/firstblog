@@ -25,7 +25,7 @@
                     @if($categories->count()> 0)
                         @foreach ($categories as $category)
                             <li class="">
-                                <a href="{{ route('single.category',['id'=>$category->id]) }}" style="text-transform:uppercase;">{{ $category->category }}</a>
+                                <a href="{{ route('single.category',['slug'=>$category->cat_slug]) }}" style="text-transform:uppercase;">{{ $category->category }}</a>
                             </li>
                         @endforeach
                     @endif
