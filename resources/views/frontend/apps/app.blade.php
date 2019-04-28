@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/grid.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/styles.css') }}">
 
-
     <!--Plugins styles-->
 
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
@@ -22,8 +21,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/magnific-popup.css') }}">
 
     <!--Styles for RTL-->
-
-    <!--<link rel="stylesheet" type="text/css" href="app/css/rtl.css">-->
 
     <!--External fonts-->
 

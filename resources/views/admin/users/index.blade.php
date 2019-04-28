@@ -1,25 +1,32 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Users')
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <b>Users</b>
+        <div class="card-block">
+            <div class="card-title-block">
+                <h2 class="title-block">Users</h2>
+            </div>
         </div>
         <div class="card-body">
             @if ($users->count()>0)
             @php($i=1)
-            <table class="table table-striped table-dark">
+            <table class="table table-striped text-center">
                 <thead>
                     <tr>
                         <th>SL No</th>
                         <th>Featured</th>
                         <th>Name</th>
                         <th>Permission</th>
-                        <th colspan="3" class="text-center">Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
+                        @if ($user->admin == 1)
+                            @continue
+                        @endif
                     <tr>
                         <td>
                             {{ $i++ }}
@@ -44,20 +51,19 @@
                             @endif
 
                         </td>
-                        <td class="text-center">
-                            <a href="{{ route('users.show', ['id' => $user->id]) }}" class="btn btn-success btn-sm">
-                                Detail
+                        <td style="white-space: nowrap;">
+                            <a class="btn btn-success btn-pill-left" href="{{ route('users.edit', ['id' => $user->id]) }}">
+                                <i class="fa fa-edit"></i>
                             </a>
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-info btn-sm" href="{{ route('users.edit', ['id' => $user->id]) }}">edit</a>
-                        </td>
-                        <td class="text-center">
+                            <a href="{{ route('users.show', ['id' => $user->id]) }}" class="btn btn-info">
+                                <i class="fa fa-eye"></i>
+                            </a>
+
                             @if(Auth::id() !== $user->id)
-                            <form action="{{ route('users.delete', ['id' => $user->id]) }}" method="get">
+                            <form class="d-inline-block" action="{{ route('users.delete', ['id' => $user->id]) }}" method="get">
                                 @csrf
-                                <button class="btn btn-danger btn-sm" type="submit">
-                                    delete
+                                <button class="btn btn-danger btn-pill-right" type="submit">
+                                    <i class="fa fa-trash"></i>
                                 </button>
                             </form>
                             @endif

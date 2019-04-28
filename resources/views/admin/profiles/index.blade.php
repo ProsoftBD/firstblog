@@ -1,16 +1,19 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Profile')
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <h3></h3>
-            <a href="{{ route('profiles.edit')}}" class="btn btn-info">Edit Profile</a>
-            <a href="{{route('profiles')}}" class="btn btn-info" style="position: absolute;right: 20px;">Change Password</a>
+        <div class="card-block">
+            <div class="card-title-block">
+                <a href="{{ route('profiles.edit')}}" class="btn btn-info">Edit Profile</a>
+                <a href="{{route('profiles')}}" class="btn btn-info" style="position: absolute;right: 20px;">Change Password</a>
+            </div>
         </div>
 
         <div class="card-body">
             <div class="row mb-5">
-                <div class="col-md-4">
+                <div class="col-md-4 order-md-last">
                     <img src="{{ asset($user->profile->avatar) }}" alt="{{ $user->name }}" class="card-img-top">
                 </div>
                 <div class="col-md-8 float-right">
@@ -48,13 +51,15 @@
             </div>
             <div class="row mb-5">
                 <div class="col-md-8">
-                    <h3>Other Info</h3>
+                    <h3>Connect</h3>
                     <div class="row">
                         <div class="col-4">
                             {{ __('Facebook :')}}
                         </div>
                         <div class="col-8">
-                            {{ $user->profile->facebook }}
+                            <a href="{{ $user->profile->facebook }}">
+                                <i class="fa fa-facebook-square fa-2x"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
@@ -62,7 +67,10 @@
                             {{ __('Youtube :')}}
                         </div>
                         <div class="col-8">
-                            {{ $user->profile->youtube }}
+                            <a href="{{ $user->profile->youtube }}">
+                                <i class="fa fa-youtube-square fa-2x"></i>
+                            </a>
+
                         </div>
                     </div>
                 </div>

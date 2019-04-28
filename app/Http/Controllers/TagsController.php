@@ -88,7 +88,7 @@ class TagsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'tag' => 'required|string|unique:tags|max:255'
+            'tag' => 'required|string|max:255'
         ]);
 
         $tag = Tag::find($id);

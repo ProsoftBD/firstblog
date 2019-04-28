@@ -1,11 +1,15 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Edit User')
 
 @section('content')
 
 <div class="card">
-    <div class="card-header">
-        <h3>Update : {{ $user->name }}</h3>
-        <a href="{{route('users')}}" class="btn btn-info" style="position: absolute;float: right;right: 20px;top: 12px;">back</a>
+    <div class="card-block">
+        <div class="card-title-block">
+            <h3 class="title-block">Update : {{ $user->name }}</h3>
+            <a href="{{route('users')}}" class="btn btn-info" style="position: absolute;float: right;right: 20px;top: 12px;">back</a>
+        </div>
     </div>
 
     <div class="card-body">
@@ -16,7 +20,7 @@
                 <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
 
                 <div class="col-md-9">
-                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" autofocus>
+                    <input id="name" type="text" class="boxed form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" autofocus>
 
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
@@ -30,7 +34,7 @@
                 <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                 <div class="col-md-9">
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}">
+                    <input id="email" type="email" class="boxed form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}">
 
                     @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
@@ -43,7 +47,7 @@
                 <label for="avatar" class="col-md-3 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                 <div class="col-md-9">
-                    <input id="avatar" type="file" class="form-control{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" value="{{ $user->avatar }}">
+                    <input id="avatar" type="file" class="boxed form-control{{ $errors->has('avatar') ? ' is-invalid' : '' }}" name="avatar" value="{{ $user->avatar }}">
 
                     @if ($errors->has('avatar'))
                     <span class="invalid-feedback" role="alert">
@@ -57,7 +61,7 @@
                 <label for="about" class="col-md-3 col-form-label text-md-right">{{ __('About Your Self') }}</label>
 
                 <div class="col-md-9">
-                    <textarea rows="4" id="about" type="text" class="form-control{{ $errors->has('about') ? ' is-invalid' : '' }}" name="about">{{ $user->profile->about }}</textarea>
+                    <textarea id="about" type="text" class="boxed form-control{{ $errors->has('about') ? ' is-invalid' : '' }}" name="about">{{ $user->profile->about }}</textarea>
 
                     @if ($errors->has('about'))
                     <span class="invalid-feedback" role="alert">
@@ -71,7 +75,7 @@
                 <label for="facebook" class="col-md-3 col-form-label text-md-right">{{ __('Facebook Link') }}</label>
 
                 <div class="col-md-9">
-                    <input id="facebook" type="text" class="form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}" name="facebook" value="{{ $user->profile->facebook }}">
+                    <input id="facebook" type="text" class="boxed form-control{{ $errors->has('facebook') ? ' is-invalid' : '' }}" name="facebook" value="{{ $user->profile->facebook }}">
 
                     @if ($errors->has('facebook'))
                     <span class="invalid-feedback" role="alert">
@@ -85,7 +89,7 @@
                 <label for="youtube" class="col-md-3 col-form-label text-md-right">{{ __('Youtube Link') }}</label>
 
                 <div class="col-md-9">
-                    <input id="youtube" type="text" class="form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}" name="youtube" value="{{ $user->profile->youtube }}">
+                    <input id="youtube" type="text" class="boxed form-control{{ $errors->has('youtube') ? ' is-invalid' : '' }}" name="youtube" value="{{ $user->profile->youtube }}">
 
                     @if ($errors->has('youtube'))
                     <span class="invalid-feedback" role="alert">
@@ -107,22 +111,19 @@
 </div>
 @endsection
 
-{{--
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('dist/summernote-bs4.css')}}">
+@section('style')
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
 @endsection
 
-@section('scripts')
-    <script src="{{ asset('dist/summernote-bs4.min.js')}}"></script>
+@section('script')
     <script>
-        $(document).ready(function(){
-            $('#about').summernote({
-                placeholder: 'Write something ...',
-                tabsize: 2,
-                height:100
-
-            });
-        });
+        ClassicEditor
+            .create( document.querySelector( '#about' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
 @endsection
- --}}

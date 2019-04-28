@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Create New Category')
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <strong>
-            Create New Category
-        </strong>
+    <div class="card-block">
+        <div class="card-title-block text-center">
+            <h2 class="title-block">Create New Category</h2>
+        </div>
     </div>
     <div class="card-body">
         <form action="{{ route('categories.store') }}" method="POST">
@@ -17,7 +19,7 @@
                 </label>
                 
                 <div class="col-md-7">
-                    <input type="text" name="category" id="category" class="form-control{{ $errors->has('category') ? ' is-invalid' : ''}}" value="{{ old('category') }}" placeholder="Category name..." autofocus>
+                    <input type="text" name="category" id="category" class="boxed form-control{{ $errors->has('category') ? ' is-invalid' : ''}}" value="{{ old('category') }}" placeholder="Category name..." autofocus>
                     
                     @if ($errors->has('category'))
                     <span class="invalid-feedback" role="alert">

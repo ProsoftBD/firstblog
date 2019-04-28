@@ -3,7 +3,11 @@
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FrontEndController;
 
-Route::post('/subscribe', function(){
+// Route::get('/home', function(){
+//     return view('admin.master');
+// });
+
+Route::post('/subscribe', function () {
     $email = request('email');
     Newsletter::subscribe($email);
     Session::flash('success', 'You are Subscribed.');
@@ -15,19 +19,19 @@ Route::get('/posts/single-post/{slug}', 'FrontEndController@singlePost')->name('
 Route::get('/categories/single-category/{slug}', 'FrontEndController@category')->name('single.category');
 Route::get('/tags/single-tag/{slug}', 'FrontEndController@tag')->name('single.tag');
 
-Route::get('/results', function(){
-    $posts = \App\Post::where('title', 'like', '%'.request('query').'%')->get();
+Route::get('/results', function () {
+    $posts = \App\Post::where('title', 'like', '%' . request('query') . '%')->get();
 
     return view('frontend.results')
-                ->with('posts', $posts)
-                ->with('settings', \App\Setting::first())
-                ->with('title', 'Search Results: '.request('query'))
-                ->with('categories', \App\Category::take(5)->get());
+        ->with('posts', $posts)
+        ->with('settings', \App\Setting::first())
+        ->with('title', 'Search Results: ' . request('query'))
+        ->with('categories', \App\Category::take(5)->get());
 });
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     /**
      * Route for Dashboard
      */
@@ -73,7 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     /**
      * Users Routes
-    */
+     */
 
 
     Route::get('/users', 'UsersController@index')->name('users');
@@ -88,7 +92,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     /**
      * Users Profile
-    */
+     */
     Route::get('/profiles', 'ProfilesController@index')->name('profiles');
     Route::get('/profiles/edit', 'ProfilesController@edit')->name('profiles.edit');
     Route::post('/profiles/update', 'ProfilesController@update')->name('profiles.update');
@@ -99,8 +103,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('/settings', 'SettingsController@index')->name('settings');
     Route::post('/settings/update', 'SettingsController@update')->name('settings.update');
-
 });
-
-
-

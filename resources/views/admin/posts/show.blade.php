@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Blog posts')
 
 @section('content')
     <div class="card">

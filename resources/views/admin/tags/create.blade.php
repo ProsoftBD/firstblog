@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Create Tag')
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <strong>
-            Create New Tag
-        </strong>
+    <div class="card-block">
+        <div class="card-title-block">
+            <h2 class="title-block text-center">Create New Tag</h2>
+        </div>
     </div>
     <div class="card-body">
         <form action="{{ route('tags.store') }}" method="POST">
@@ -17,7 +19,7 @@
                 </label>
                 
                 <div class="col-md-7">
-                    <input type="text" name="tag" id="tag" class="form-control{{ $errors->has('tag') ? ' is-invalid' : ''}}" value="{{ old('tag') }}" placeholder="Tag name..." autofocus>
+                    <input type="text" name="tag" id="tag" class="boxed form-control{{ $errors->has('tag') ? ' is-invalid' : ''}}" value="{{ old('tag') }}" placeholder="Tag name..." autofocus>
                     
                     @if ($errors->has('tag'))
                     <span class="invalid-feedback" role="alert">

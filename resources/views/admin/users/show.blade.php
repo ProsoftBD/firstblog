@@ -1,10 +1,14 @@
-@extends('layouts.app')
+@extends('admin.master')
+
+@section('title', 'Users Details')
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            <h3>Profile</h3>
-            <a href="{{route('users')}}" class="btn btn-info" style="position: absolute;float: right;right: 20px;top: 12px;">back</a>
+        <div class="card-block">
+            <div class="card-title-block">
+                <h3>Profile</h3>
+                <a href="{{route('users')}}" class="btn btn-info" style="position: absolute;float: right;right: 20px;top: 12px;">back</a>
+            </div>
         </div>
 
         <div class="card-body">
