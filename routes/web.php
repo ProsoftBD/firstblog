@@ -3,17 +3,6 @@
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FrontEndController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::post('/subscribe', function(){
     $email = request('email');
     Newsletter::subscribe($email);
@@ -26,8 +15,7 @@ Route::get('/posts/single-post/{slug}', 'FrontEndController@singlePost')->name('
 Route::get('/categories/single-category/{slug}', 'FrontEndController@category')->name('single.category');
 Route::get('/tags/single-tag/{slug}', 'FrontEndController@tag')->name('single.tag');
 
-Route::get('/results', function()
-{
+Route::get('/results', function(){
     $posts = \App\Post::where('title', 'like', '%'.request('query').'%')->get();
 
     return view('frontend.results')
@@ -35,12 +23,6 @@ Route::get('/results', function()
                 ->with('settings', \App\Setting::first())
                 ->with('title', 'Search Results: '.request('query'))
                 ->with('categories', \App\Category::take(5)->get());
-});
-
-
-Route::get('/test', function(){
-    return App\Profile::find(1)->user;
-    // return Auth::id();
 });
 
 Auth::routes();

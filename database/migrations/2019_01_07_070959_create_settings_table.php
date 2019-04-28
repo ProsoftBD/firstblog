@@ -17,7 +17,7 @@ class CreateSettingsTable extends Migration
             $table->increments('id');
             $table->string('favicon');
             $table->string('site_name');
-            $table->string('site_about');
+            $table->text('site_about');
             $table->string('contact_number');
             $table->string('available_time');
             $table->string('contact_email');

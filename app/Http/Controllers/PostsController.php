@@ -21,8 +21,9 @@ class PostsController extends Controller
      */
     public function index()
     {
+//        dd(Post::Where('user_id',Auth::id())->get());
         return view('admin.posts.index')
-                   ->with('posts', Post::all())
+                   ->with('posts', Post::Where('user_id',Auth::id())->get())
                    ->with('settings', Setting::first());
     }
 

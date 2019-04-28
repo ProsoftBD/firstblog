@@ -21,7 +21,7 @@ class SettingsController extends Controller
     public function update(Request $request)
     {
         $this->validate($request,[
-            'favicon'=>'required|image|max:500',
+            'favicon'=>'nullable|image|max:500',
             'site_name' => 'required|string|max:255',
             'site_about' => 'required|string|max:255',
             'contact_number' => 'required|max:11|regex:/(01)[0-9]{9}/',
@@ -33,7 +33,19 @@ class SettingsController extends Controller
 
 
         $s = Setting::first();
-        $s->favicon = $request->favicon;
+        // $s->favicon = $request->favicon;
+        if ($request->hasFile('favicon')) {
+
+            if($s->favicon != "uploads/favicon/favicon.ico"){
+                unlink($s->favicon);
+            }
+
+            $newFavicon = $request->favicon;
+            $faviocnName = time(). '.'. $newFavicon->extension();
+            $newFavicon->move('uploads/favicon/', $faviocnName);
+            $s->favicon = 'uploads/favicon/'.$faviocnName;
+            $s->save();
+        }
         $s->site_name = $request->site_name;
         $s->site_about = $request->site_about;
         $s->contact_email = $request->contact_email;

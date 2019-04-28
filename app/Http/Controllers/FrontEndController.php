@@ -18,9 +18,9 @@ class FrontEndController extends Controller
                 ->with('firstPost', Post::orderBy('created_at', 'desc')->first())
                 ->with('secondPost', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->first())
                 ->with('thirdPost', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->first())
-                ->with('catA', Category::orderBy('created_at', 'desc')->first())
-                ->with('catB', Category::orderBy('created_at', 'desc')->skip(1)->take(1)->first())
-                ->with('catC', Category::orderBy('created_at', 'desc')->skip(2)->take(1)->first())
+                ->with('catA', Category::orderBy('created_at', 'asc')->first())
+                ->with('catB', Category::orderBy('created_at', 'asc')->skip(1)->take(1)->first())
+                ->with('catC', Category::orderBy('created_at', 'asc')->skip(2)->take(1)->first())
                 ->with('settings', Setting::first());
     }
 
